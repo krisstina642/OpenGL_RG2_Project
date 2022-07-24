@@ -5,6 +5,7 @@
     <NATIVE>
       <root url="file://$PROJECT_DIR$/src/natives/windows-amd64" />
       <root url="file://$PROJECT_DIR$/src/natives/windows-i586" />
+      <root url="file://$PROJECT_DIR$/src/natives/macosx-universal" />
     </NATIVE>
     <SOURCES />
   </library>
