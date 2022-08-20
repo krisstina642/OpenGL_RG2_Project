@@ -37,6 +37,15 @@ public class Graphics {
 
         Texture tex=image.getTexture();
 
+        if (    x - width/2 - Renderer.cameraX > Renderer.unitsWide / 2 ||
+                x + width/2 - Renderer.cameraX < -Renderer.unitsWide / 2 ||
+                y - height/2 - Renderer.cameraY > Renderer.unitsTall / 2 ||
+                y + height/2 - Renderer.cameraY < -Renderer.unitsTall / 2
+        )
+        {
+            return;
+        }
+
         if (tex!=null){
             gl.glBindTexture(GL2.GL_TEXTURE_2D, tex.getTextureObject());
         }
@@ -63,7 +72,7 @@ public class Graphics {
         gl.glBindTexture(GL2.GL_TEXTURE_2D,0);
 
         gl.glRotated(-rotation,0,0,1 );
-        gl.glTranslated( -x, y,0 );
+        gl.glTranslated( -x, -y,0 );
     }
 
     public static void setColor(float r, float g, float b, float a){

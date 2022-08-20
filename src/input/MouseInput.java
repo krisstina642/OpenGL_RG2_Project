@@ -3,8 +3,30 @@ package input;
 
 import com.jogamp.newt.event.MouseEvent;
 import com.jogamp.newt.event.MouseListener;
+import graphics.Renderer;
 
 public class MouseInput implements MouseListener {
+
+    private static int x = 0;
+    private static int y = 0;
+
+    public static int getX() {
+        return x;
+    }
+
+    public static int getY() {
+        return y;
+    }
+
+    public static float getWorldX(){
+        return Renderer.unitsWide / Renderer.getWindowWidth() * x - Renderer.unitsWide/2 + Renderer.cameraX;
+    }
+
+    public static float getWorldY(){
+        float unitsTall = Renderer.unitsWide * ((float) ((float)Renderer.getWindowHeight()/(float)Renderer.getWindowWidth()));
+        return unitsTall / Renderer.getWindowHeight() * y - unitsTall/2 + Renderer.cameraY;
+    }
+
     @Override
     public void mouseClicked(MouseEvent mouseEvent) {
         System.out.println(mouseEvent.getX()+ " "+mouseEvent.getY());
@@ -32,7 +54,8 @@ public class MouseInput implements MouseListener {
 
     @Override
     public void mouseMoved(MouseEvent mouseEvent) {
-
+        x= mouseEvent.getX();
+        y= mouseEvent.getY();
     }
 
     @Override

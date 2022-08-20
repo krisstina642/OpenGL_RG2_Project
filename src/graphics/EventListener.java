@@ -1,5 +1,6 @@
 package graphics;
 
+import World.World;
 import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GLAutoDrawable;
 import com.jogamp.opengl.GLEventListener;
@@ -14,9 +15,12 @@ public class EventListener implements GLEventListener {
     @Override
     public void init(GLAutoDrawable glAutoDrawable) {
         GL2 gl2 = glAutoDrawable.getGL().getGL2();
-        gl2.glClearColor(0,0,0,1);
+        gl2.glClearColor(0.5f,0,0,1);
+
         gl2.glEnable(GL2.GL_TEXTURE_2D);
-        image= new ImageResource("/res/image.jpg");
+        gl2.glEnable(GL2.GL_BLEND);
+        gl2.glBlendFunc(GL2.GL_SRC_ALPHA, GL2.GL_ONE_MINUS_SRC_ALPHA);
+        //image= new ImageResource("/res/image.jpg");
     }
 
     @Override
@@ -29,9 +33,14 @@ public class EventListener implements GLEventListener {
         gl = glAutoDrawable.getGL().getGL2();
         gl.glClear(GL2.GL_COLOR_BUFFER_BIT);
 
+
+
+        gl.glTranslatef(-Renderer.cameraX, -Renderer.cameraY,0);
+        World.render();
+        gl.glTranslatef(Renderer.cameraX, Renderer.cameraY,0);
         //Graphics.fillRect(0,0,2,2);
-        Graphics.setColor(1,0.5f,0.5f,1);
-        Graphics.drawImage(image,0,0,Renderer.unitsWide,Renderer.unitsWide);
+        //Graphics.setColor(1,0.5f,0.5f,1);
+        //Graphics.drawImage(image,0,0,Renderer.unitsWide,Renderer.unitsWide);
         //x+=0.05f;
     }
 
@@ -42,9 +51,7 @@ public class EventListener implements GLEventListener {
         gl.glMatrixMode(GL2.GL_PROJECTION);
         gl.glLoadIdentity();
 
-        float unitsTall = Renderer.getWindowHeight()/(Renderer.getWindowWidth()/Renderer.unitsWide);
-
-        gl.glOrtho(-Renderer.unitsWide/2,Renderer.unitsWide/2,-unitsTall/2,unitsTall/2,-1,1);
+        gl.glOrtho(-Renderer.unitsWide/2,Renderer.unitsWide/2,-Renderer.unitsTall/2,Renderer.unitsTall/2,-1,1);
         gl.glMatrixMode(GL2.GL_MODELVIEW);
     }
 }
