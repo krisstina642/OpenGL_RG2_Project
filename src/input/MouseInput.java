@@ -23,8 +23,8 @@ public class MouseInput implements MouseListener {
     }
 
     public static float getWorldY(){
-        float unitsTall = Renderer.unitsWide * ((float) ((float)Renderer.getWindowHeight()/(float)Renderer.getWindowWidth()));
-        return unitsTall / Renderer.getWindowHeight() * y - unitsTall/2 + Renderer.cameraY;
+        Renderer.unitsTall = Renderer.unitsWide * ((float) ((float)Renderer.getWindowHeight()/(float)Renderer.getWindowWidth()));
+        return Renderer.unitsTall / Renderer.getWindowHeight() * y - Renderer.unitsTall/2 + Renderer.cameraY;
     }
 
     @Override

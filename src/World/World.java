@@ -11,20 +11,24 @@ public class World {
     private static ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
 
     public static void update(){
-        //System.out.println("update");
+        System.out.println("update");
         for (GameObject go: gameObjects){
             go.update();
+        }
+        for (Tile tile: tiles){
+            tile.update();
         }
     }
     public static void render(){
         //Graphics.fillRect(0,0,1,1);
-
-        for (GameObject go: gameObjects){
-            go.render();
-        }
+        //System.out.println("update");
         for (Tile tile: tiles){
             tile.render();
         }
+        for (GameObject go: gameObjects){
+            go.render();
+        }
+
     }
 
     public static void addObject(GameObject go){

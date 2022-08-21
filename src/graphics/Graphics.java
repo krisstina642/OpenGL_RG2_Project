@@ -29,7 +29,7 @@ public class Graphics {
         gl.glFlush();
 
         gl.glRotated(-rotation,0,0,1 );
-        gl.glTranslated( -x, y,0 );
+        gl.glTranslated( -x, -y,0 );
     }
 
     public static void drawImage(ImageResource image, float x, float y, float width, float height){

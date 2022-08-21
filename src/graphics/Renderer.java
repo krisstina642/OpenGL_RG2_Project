@@ -1,6 +1,6 @@
 package graphics;
 
-import com.jogamp.newt.event.KeyListener;
+
 import com.jogamp.newt.opengl.GLWindow;
 import com.jogamp.opengl.GLCapabilities;
 import com.jogamp.opengl.GLProfile;
@@ -11,10 +11,12 @@ public class Renderer {
     private static GLWindow window = null;
     private static GLProfile profile= null;
 
-    public static int screenWidth = 640*2;
-    public static int screenHeight = 340*2;
+    public static int screenWidth = 1080;
+    public static int screenHeight = 680;
+    public static float STEP=1f/180f;
+    public static int MAX_NUM_OF_ITTERATIONS =5;
 
-    public static float unitsWide = 50;
+    public static float unitsWide = 6;
     public static float unitsTall;
 
     public static float cameraX = 0;
@@ -36,7 +38,7 @@ public class Renderer {
        // FPSAnimator animator = new FPSAnimator(window, 60);
        // animator.start();
 
-        //window.setFullscreen(true);
+        window.setFullscreen(false);
         window.setVisible(true);
 
     }

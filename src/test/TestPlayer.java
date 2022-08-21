@@ -3,21 +3,16 @@ package test;
 import Engine.GameLoop;
 import World.GameObject;
 import com.jogamp.newt.event.KeyEvent;
-import graphics.Animation;
-import graphics.Graphics;
 import graphics.Renderer;
 import input.KeyInput;
 import input.MouseInput;
-import resource.ImageResource;
 
 public class TestPlayer extends GameObject {
 
     public TestPlayer(){
-        animations = new Animation[1];
-        animations[0] = new Animation();
-        animations[0].frames = new ImageResource[2];
-        animations[0].frames[0]=new ImageResource("/res/image.jpg");
-        animations[0].frames[1]=new ImageResource("/res/image2.jpg");
+        red=1;
+        green=0;
+        blue=1;
     }
 
     @Override
@@ -43,8 +38,10 @@ public class TestPlayer extends GameObject {
         y += yInput * a;
         rotation = (float) Math.toDegrees(Math.atan2(MouseInput.getWorldX() - x ,MouseInput.getWorldY() - y));
 
-        Renderer.cameraX = x;
-        Renderer.cameraY = y;
+        // Da se kamera pomera
+            Renderer.cameraX = x;
+            Renderer.cameraY = y;
+
        // Renderer.cameraX +=1.0f * GameLoop.updateDelta();
        // x+=0.1f;
     }

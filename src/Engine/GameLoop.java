@@ -7,10 +7,10 @@ public class GameLoop {
     private static boolean running = false;
 
     private static int updates = 0;
-    private static final int MAX_UPDATES = 5;
+    private static final int MAX_UPDATES = 0;
     private static long lastUpdateTime=0;
 
-    private static int targetFPS = 60;
+    private static int targetFPS = 1;
     private static int targetTime = 1000000000/targetFPS;
 
     public static void start(){
